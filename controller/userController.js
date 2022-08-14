@@ -11,7 +11,6 @@ exports.getSignedUser = async (req, res) => {
   const user = await User.findById({ _id: req.user.userId }).select(
     "-password"
   );
-
   return res.status(200).json(user);
 };
 
