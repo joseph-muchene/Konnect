@@ -67,17 +67,19 @@ exports.updateUser = async function (req, res) {
   // get the user Id
   const userId = req.user.userId;
 
-  User.findOneAndUpdate({ id: userId }, { $set: req.body }, { new: true }).exec(
-    (err, data) => {
-      if (err || !data) {
-        return res.status(400).json({
-          msg: "could not update",
-        });
-      } else {
-        return res.status(200).json(data);
-      }
+  User.findOneAndUpdate(
+    { _id: userId },
+    { $set: req.body },
+    { new: true }
+  ).exec((err, data) => {
+    if (err || !data) {
+      return res.status(400).json({
+        msg: "could not update",
+      });
+    } else {
+      return res.status(200).json(data);
     }
-  );
+  });
 };
 
 exports.followUser = async (req, res) => {
