@@ -1,13 +1,12 @@
 {
   "name": "connector",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,7 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.2"
   },
-  "devDependencies": {
-    "morgan": "^1.10.0"
+  "engines": {
+    "node": "16.15.0"
   }
 }
