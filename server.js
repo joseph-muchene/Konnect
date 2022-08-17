@@ -20,11 +20,15 @@ app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/post", require("./routes/postRoute"));
 
+// Serve frontend
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("Client/build"));
+  app.use(express.static(path.join(__dirname, "./Client/build")));
+
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "Client", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname, "./", "Client", "build", "index.html"))
   );
+} else {
+  app.get("/", (req, res) => res.send("Please set to production"));
 }
 const port = process.env.PORT || 8000;
 
