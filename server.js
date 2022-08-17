@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const morgan = require("morgan");
+
 const app = express();
 // import routes
 const userRoutes = require("./routes/userRoutes");
@@ -10,11 +10,9 @@ const AuthRoutes = require("./routes/authRoutes");
 const { connectDb } = require("./config/dbConnect");
 
 connectDb();
-
 // middlewares for express
 app.use(express.json());
 app.use(cors());
-app.use(morgan("dev"));
 
 // routes
 app.use("/api/v1/user", userRoutes);
