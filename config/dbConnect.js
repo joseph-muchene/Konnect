@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 exports.connectDb = () => {
-  mongoose.connect("mongodb://localhost/Connect", (err, connection) => {
+  mongoose.connect(process.env.Mongo_uri, (err, connection) => {
     if (connection && !err) {
       console.log("mongodb connection was established");
     }
