@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const morgan = require("morgan");
+
 const app = express();
 // import routes
 const userRoutes = require("./routes/userRoutes");
@@ -13,22 +13,18 @@ connectDb();
 // middlewares for express
 app.use(express.json());
 app.use(cors());
-app.use(morgan("dev"));
+
 // routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/post", require("./routes/postRoute"));
 
-
-if (
-  process.env.NODE_ENV === "production" 
-) {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname + "/client/build/index.html"));
   });
 }
-
 
 const port = process.env.PORT || 8000;
 
