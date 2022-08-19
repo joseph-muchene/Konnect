@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:8000/api/v1/";
+const URL = "/api/v1/";
 const createPost = async (postData) => {
   const token = JSON.parse(localStorage.getItem("user")).user.token;
   const config = {

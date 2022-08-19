@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:8000/api/v1/user/";
+const URL = "/api/v1/user/";
 const getAllUsers = async () => {
   const { data } = await axios.get(URL + "/participants/all");
 
